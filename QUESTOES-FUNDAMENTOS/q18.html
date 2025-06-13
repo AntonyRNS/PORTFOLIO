@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contar Palavras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 60px;
+            margin: 0;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h3 class="mb-4">Contar Palavras</h3>
+        <input type="text" id="frase" placeholder="Digite uma frase" class="form-control mb-3" />
+        <input type="button" value="Contar" onclick="contarPalavras()" class="btn btn-dark w-100" />
+        <div id="resultado" class="resultado"></div>
+    </div>
+
+    <script>
+        function contarPalavras() {
+            const frase = document.getElementById('frase').value.trim();
+            const resultadoDiv = document.getElementById('resultado');
+
+            if (frase.length === 0) {
+                resultadoDiv.innerHTML = "<h5>Por favor, digite uma frase.</h5>";
+                return;
+            }
+
+            const palavras = frase.split(" ").filter(palavra => palavra.length > 0);
+            const quantidade = palavras.length;
+
+            resultadoDiv.innerHTML = `<h5>A frase contém ${quantidade} palavra${quantidade > 1 ? 's' : ''}.</h5>`;
+        }
+    </script>
+</body>
+
+</html>

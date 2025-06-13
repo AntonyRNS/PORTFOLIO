@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Q10</title>
+  <title>Q2</title>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -39,50 +39,38 @@
 </head>
 <body>
   <div class="card">
-    <h3 class="mb-4">Comparar Strings</h3>
+    <h3 class="mb-4">Gerar Números Pares</h3>
     <input
       type="text"
-      id="string1"
-      placeholder="Digite uma String"
-      class="form-control mb-3"
-    />
-    <input
-      type="text"
-      id="string2"
-      placeholder="Digite outra String"
+      id="numero"
+      placeholder="Digite um número"
       class="form-control mb-3"
     />
     <input
       type="button"
-      value="Enviar"
-      onclick="comparar()"
+      value="Gerar Pares"
+      onclick="gerarPares()"
       class="btn btn-dark w-100"
     />
     <div id="resultado" class="resultado"></div>
   </div>
 
   <script>
-    function comparar(){
-      const str1 = document.querySelector('#string1').value
-      const str2 = document.querySelector('#string2').value
-
-      const resultadoDiv = document.getElementById('resultado')
-
-      while (resultadoDiv.firstChild) {
-        resultadoDiv.removeChild(resultadoDiv.firstChild)
+    function gerarPares() {
+      const listaPares = [];
+      const numero = parseInt(document.getElementById('numero').value);
+      for (let num = 0; num <= numero; num++) {
+        if (num % 2 === 0) {
+          listaPares.push(num);
+        }
       }
 
-      if (str1 === str2) {
-        const h1 = document.createElement('h1')
-        const texto = document.createTextNode(`As strings são iguais.`)
-        h1.appendChild(texto)
-        resultadoDiv.appendChild(h1)
-      } else {
-        const h1 = document.createElement('h1')
-        const texto = document.createTextNode(`As strings são diferentes.`)
-        h1.appendChild(texto)
-        resultadoDiv.appendChild(h1)
-      }
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = ''; 
+
+      const p = document.createElement('p');
+      p.innerText = listaPares.join(", ");
+      resultadoDiv.appendChild(p);
     }
   </script>
 </body>
